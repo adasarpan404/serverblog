@@ -6,5 +6,5 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/v1/post", PostRoutes);
-app.use("/api/v1/user", UserRoutes);
+app.use("/api/v1/users", UserRoutes);
 module.exports = app;
