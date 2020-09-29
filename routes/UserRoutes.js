@@ -1,14 +1,15 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const userController = require("./../controller/userController");
-const authController = require("./../controller/authController");
-router.post("/signup", authController.signUp);
+const userController = require('./../controller/userController');
+const authController = require('./../controller/authController');
+router.post('/signup', authController.signUp);
+router.post('/login', authController.login);
 router
-  .route("/")
+  .route('/')
   .get(userController.getAllUser)
   .post(userController.createUser);
 router
-  .route("/:id")
+  .route('/:id')
   .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
