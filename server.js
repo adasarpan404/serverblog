@@ -1,10 +1,10 @@
-const app = require("./app");
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-dotenv.config({ path: "./config.env" });
+const app = require('./app');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+dotenv.config({ path: './config.env' });
 
 const DB = process.env.DATABASE.replace(
-  "<PASSWORD>",
+  '<PASSWORD>',
   process.env.DATABASE_PASSWORD
 );
 mongoose
@@ -15,10 +15,18 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("db connection is successful");
+    console.log('db connection is successful');
   });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`server listening ${port}  .......   `);
+});
+
+process.on('unhandledRejection', (err) => {
+  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
 });
