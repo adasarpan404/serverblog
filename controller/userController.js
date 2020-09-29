@@ -1,34 +1,8 @@
-exports.getAllUser = (req, res) => {
-  res.status(500).json({
-    error: 500,
-    message: "routes is not defined",
-  });
-};
+const handleFactory = require('./handleFactory');
+const User = require('./../Models/userModel');
 
-exports.createUser = (req, res) => {
-  res.status(500).json({
-    error: 500,
-    message: "routes is not defined",
-  });
-};
-
-exports.getUser = (req, res) => {
-  res.status(500).json({
-    error: 500,
-    message: "routes is not defined",
-  });
-};
-
-exports.updateUser = (req, res) => {
-  res.status(500).json({
-    error: 500,
-    message: "routes is not defined",
-  });
-};
-
-exports.deleteUser = (req, res) => {
-  res.status(500).json({
-    error: 500,
-    message: "routes is not defined",
-  });
-};
+exports.getAllUser = handleFactory.getAll(User);
+exports.createUser = handleFactory.createOne(User);
+exports.getUser = handleFactory.getOne(User);
+exports.updateUser = handleFactory.updateOne(User);
+exports.deleteUser = handleFactory.deleteOne(User);
